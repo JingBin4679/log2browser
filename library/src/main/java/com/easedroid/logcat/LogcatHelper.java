@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.easedroid.logcat.handler.EmptyRequestHandler;
 import com.easedroid.logcat.handler.LogcatRequestHandler;
-import com.easedroid.logcat.handler.RequestHandler;
+import com.easedroid.logcat.handler.BaseRequestHandler;
 import com.easedroid.logcat.utils.Net;
 import com.easedroid.logcat.utils.Util;
 
@@ -120,7 +120,7 @@ public class LogcatHelper {
     private void processSocket(Socket socket) {
         try {
             Request request = Request.read(socket.getInputStream());
-            RequestHandler clients = getHandler(request.uri);
+            BaseRequestHandler clients = getHandler(request.uri);
             clients.processRequest(request, socket);
         } catch (SocketException e) {
             Log.d(TAG, "Socket is closed.");
@@ -136,7 +136,7 @@ public class LogcatHelper {
     }
 
 
-    private RequestHandler getHandler(String url) {
+    private BaseRequestHandler getHandler(String url) {
         if (url.startsWith(Constant.URL_LOGCAT)) {
             return new LogcatRequestHandler();
         }

@@ -10,7 +10,7 @@ import java.io.OutputStream;
  * Created by bin.jing on 2017/12/19.
  */
 
-public class LogcatRequestHandler extends RequestHandler {
+public class LogcatRequestHandler extends BaseRequestHandler {
 
     @Override
     protected void response(OutputStream out) {

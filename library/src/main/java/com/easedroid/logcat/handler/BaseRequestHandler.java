@@ -12,7 +12,7 @@ import java.net.Socket;
  * Created by bin.jing on 2017/12/18.
  */
 
-public abstract class RequestHandler {
+public abstract class BaseRequestHandler {
 
     public void processRequest(Request request, Socket socket) throws IOException {
         OutputStream out = new BufferedOutputStream(socket.getOutputStream());

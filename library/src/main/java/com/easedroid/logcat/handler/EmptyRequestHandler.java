@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
  * Created by bin.jing on 2017/12/19.
  */
 
-public class EmptyRequestHandler extends RequestHandler {
+public class EmptyRequestHandler extends BaseRequestHandler {
 
     public static final String NOT_SUPPORT_REQUEST = "Not support request.";
 
