@@ -1,7 +1,7 @@
 # log2browser
 This library provides a way to get android app log from browser.
 
-##集成方法
+## 集成方法
     1、新建一个android.app.Application的子类App,
     2、复写onCreate方法
     3、在onCreate中LogcatHelper.init();
