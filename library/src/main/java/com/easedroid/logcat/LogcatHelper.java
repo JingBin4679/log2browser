@@ -66,7 +66,7 @@ public class LogcatHelper {
                     LogcatHelper.this.waitConnectionThread = new Thread(new WaitRequestsRunnable(startSignal));
                     LogcatHelper.this.waitConnectionThread.start();
                     startSignal.await(); // wait for server starts finish
-                    Log.d(TAG, String.format("Attention!!!! Logcat url is http://%s:%d/%s", PROXY_HOST, PROXY_PORT, Constant.URL_LOGCAT));
+                    Log.d(TAG, String.format("Log to http://%s:%d/%s", PROXY_HOST, PROXY_PORT, Constant.URL_LOGCAT));
                 } catch (IOException | InterruptedException e) {
                     socketProcessor.shutdown();
                     throw new IllegalStateException("Error starting local proxy server", e);
@@ -95,7 +95,7 @@ public class LogcatHelper {
         try {
             while (!Thread.currentThread().isInterrupted()) {
                 Socket socket = serverSocket.accept();
-                Log.d(TAG, "Accept new socket " + socket);
+                Log.d(TAG, "Accept a new socket " + socket);
                 socketProcessor.submit(new SocketProcessorRunnable(socket));
             }
         } catch (IOException e) {
@@ -120,11 +120,10 @@ public class LogcatHelper {
     private void processSocket(Socket socket) {
         try {
             Request request = Request.read(socket.getInputStream());
-            Log.d(TAG, "Request to cache proxy:" + request);
             RequestHandler clients = getHandler(request.uri);
             clients.processRequest(request, socket);
         } catch (SocketException e) {
-            Log.d(TAG, "Closing socket… Socket is closed by client.");
+            Log.d(TAG, "Socket is closed.");
         } catch (IOException e) {
             Log.e(TAG, "Error processing request \n" + e.getLocalizedMessage());
         } finally {
