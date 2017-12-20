@@ -2,9 +2,9 @@ package com.easedroid.logcat;
 
 import android.util.Log;
 
-import com.easedroid.logcat.reponse.EmptyRequestHandler;
-import com.easedroid.logcat.reponse.LogcatRequestHandler;
-import com.easedroid.logcat.reponse.RequestHandler;
+import com.easedroid.logcat.handler.EmptyRequestHandler;
+import com.easedroid.logcat.handler.LogcatRequestHandler;
+import com.easedroid.logcat.handler.RequestHandler;
 import com.easedroid.logcat.utils.Net;
 import com.easedroid.logcat.utils.Util;
 

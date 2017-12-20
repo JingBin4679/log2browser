@@ -1,4 +1,4 @@
-package com.easedroid.logcat.reponse;
+package com.easedroid.logcat.handler;
 
 import com.easedroid.logcat.Request;
 
